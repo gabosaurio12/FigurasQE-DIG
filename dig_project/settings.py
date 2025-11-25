@@ -5,9 +5,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "reemplaza-esto-por-una-secret-key-segura"
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS: list[str] = []
+CSRF_TRUSTED_ORIGINS = [
+    "https://figurasqe-dig.onrender.com",
+]
+
+ALLOWED_HOSTS = ["figurasqe-dig.onrender.com"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -71,7 +75,6 @@ STATIC_URL = "/static/"
 # Incluimos la carpeta 'static' y la carpeta 'figmas' donde pusiste tus diseños exportados.
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    BASE_DIR / "figmas",
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
