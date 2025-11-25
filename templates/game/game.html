@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Juego - Figures That Teach</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/game.css' %}" />
+  </head>
+
+  <body class="game-body" >
+    <video autoplay muted loop id="bg-video">
+      <source src="{% static 'resources/background.mp4' %}" type="video/mp4">
+    </video>
+    <div class="page">
+      <main class="main main-game">
+        <section class="game-layout">
+          <div class="camera-column">
+            <!-- Rectángulo de cámara  -->
+            <div class="camera-box">
+              <span class="camera-label">Cámara del niño / niña</span>
+            </div>
+            <p class="camera-instructions">
+              Levanta tus dedos frente a la cámara y mira cómo se encienden las
+              figuras rojas a la derecha.
+            </p>
+            <div id="figures-container" class="figures-container game-figures">
+              <div class="figure-circle pos-1" data-index="1"></div>
+              <div class="figure-circle pos-2" data-index="2"></div>
+              <div class="figure-circle pos-3" data-index="3"></div>
+              <div class="figure-circle pos-4" data-index="4"></div>
+              <div class="figure-circle pos-5" data-index="5"></div>
+            </div>
+          </div>
+          
+          <img src="{% static 'resources/sol.png' %}" id="sun-img" >          
+        </section>
+      </main>
+    </div>
+    <script src="{% static 'js/game.js' %}"></script>
+  </body>
+</html>
+
+

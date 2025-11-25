@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Figures That Teach / Figuras que enseñan</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/game.css' %}" />
+  </head>
+  <body class="game-body" style="background-image: url({% static 'resources/mainpage.png' %});">
+    <div class="landing-page">
+      <main class="landing-main">
+        <div class="landing-actions">
+          <a href="{% url 'game:game' %}" class="primary-button">
+            Empezar a jugar
+          </a>
+        </div>  
+      </main>
+    </div>
+  </body>
+
+  <script src="{% static 'js/game.js' %}"></script>
+
+</html>
+
+
