@@ -24,8 +24,8 @@ const camera = new Camera(videoElement, {
 camera.start();
 
 function onResults(results) {
-  if (!results.multiHandLandmarks) {
-    updateFingerCount(0);
+  updateFingerCount(0);
+  if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
     return;
   }
 
