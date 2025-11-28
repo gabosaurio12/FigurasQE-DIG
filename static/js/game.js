@@ -52,6 +52,7 @@ function onResults(results) {
 
 
 function updateFingerCount(count) {
+  console.log("Dedos detectados: ", count);
   const circles = document.querySelectorAll(".figure-circle");
   const n = Math.max(0, Math.min(circles.length, Number(count) || 0));
 
