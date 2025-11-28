@@ -5,6 +5,10 @@
     <title>Juego - Figures That Teach</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/game.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="game.html"></script>
   </head>
 
   <body class="game-body" >
@@ -17,7 +21,7 @@
           <div class="camera-column">
             <!-- Rectángulo de cámara  -->
             <div class="camera-box">
-              <span class="camera-label">Cámara del niño / niña</span>
+              <video id="camera" autoplay></video>
             </div>
             <p class="camera-instructions">
               Levanta tus dedos frente a la cámara y mira cómo se encienden las
