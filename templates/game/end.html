@@ -6,12 +6,12 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/game.css' %}" />
   </head>
-  <body class="game-body" style="background-image: url({% static 'resources/mainpage.png' %});">
+  <body class="game-body" style="background-image: url({% static 'resources/endpage.png' %});">
     <div class="landing-page">
       <main class="landing-main">
         <div class="landing-actions">
-          <a href="{% url 'game:game' %}" class="primary-button">
-            Empezar a jugar
+          <a href="{% url 'game:home' %}" class="primary-button">
+            Pantalla principal
           </a>
         </div>  
       </main>

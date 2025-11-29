@@ -17,8 +17,8 @@
     <div class="page">
       <main class="main main-game">
         <section class="game-layout">
-          <div class="camera-column">
-            <!-- Rectángulo de cámara  -->
+          <!-- Columna 1, Fila 1: Cámara -->
+          <div class="camera-section">
             <div class="camera-box">
               <video id="camera" autoplay></video>
             </div>
@@ -26,16 +26,35 @@
               Levanta tus dedos frente a la cámara y mira cómo se encienden las
               figuras rojas a la derecha.
             </p>
-            <div id="figures-container" class="figures-container game-figures">
-              <div class="figure-circle pos-1" data-index="1"></div>
-              <div class="figure-circle pos-2" data-index="2"></div>
-              <div class="figure-circle pos-3" data-index="3"></div>
-              <div class="figure-circle pos-4" data-index="4"></div>
-              <div class="figure-circle pos-5" data-index="5"></div>
+          </div>
+          
+          <!-- Columna 2, Fila 1: Sol -->
+          <div class="sun-section">
+            <img src="{% static 'resources/sol.png' %}" id="sun-img" >
+          </div>
+          
+          <!-- Columna 1, Fila 2: Contenedor con 4 círculos -->
+          <div class="circles-container-left">
+            <div id="left-container" class="left-figures-container game-figures">
+              <div class="left-figure-circle figure-circle pos-1" data-index="1"></div>
+              <div class="left-figure-circle figure-circle pos-2" data-index="2"></div>
+              <div class="left-figure-circle figure-circle pos-3" data-index="3"></div>
+              <div class="left-figure-circle figure-circle pos-4" data-index="4"></div>
             </div>
           </div>
           
-          <img src="{% static 'resources/sol.png' %}" id="sun-img" >          
+          <!-- Columna 2, Fila 2: Contenedor con 2 círculos -->
+          <div class="circles-container-right">
+            <div id="right-container" class="right-figures-container game-figures">
+              <div class="right-figure-circle figure-circle pos-5" data-index="5"></div>
+              <div class="right-figure-circle figure-circle pos-6" data-index="6"></div>
+            </div>
+          </div>
+          
+          <!-- Columna 2, Fila 3: Botón siguiente -->
+          <div class="button-section">
+            <a href="{% url 'game:end' %}" class="next-button">Siguiente</a>
+          </div>
         </section>
       </main>
     </div>

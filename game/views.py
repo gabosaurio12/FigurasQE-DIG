@@ -12,8 +12,13 @@ def home(request):
 def game_view(request):
     """
     Pantalla de juego donde se muestra la cámara del niño y las figuras interactivas.
-    Basada en el diseño de Frame 1.png.
     """
     return render(request, "game/game.html")
+
+def end_view(request):
+    """
+    Pantalla final del juego
+    """
+    return render(request, "game/end.html")
 
 

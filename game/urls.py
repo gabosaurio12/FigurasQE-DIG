@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.home, name="home"),
     # Pantalla de juego
     path("game/", views.game_view, name="game"),
+    path("end/", views.end_view, name="end"),
 ]
 
 

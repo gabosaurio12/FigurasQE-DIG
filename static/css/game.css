@@ -9,7 +9,6 @@
 #sun-img {
   width: 300px;
   height: 300px;
-  transform: translateX(-150px);
   z-index:-1;
 }
 
@@ -79,15 +78,12 @@ body {
 }
 
 .main {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-  gap: 24px;
   width: 100%;
   max-width: 1100px;
+  position: relative;
 }
 
 .main-game {
-  display: block;
   max-width: 1100px;
 }
 
@@ -99,6 +95,7 @@ body {
 
 .camera-area,
 .figures-area {
+  position: relative;
   background: #ffffffcc;
   border-radius: 24px;
   padding: 20px;
@@ -123,11 +120,13 @@ body {
   color: #10b981;
 }
 
-.figures-container {
+.left-figures-container {
   display: flex;
+  position: relative;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
 .figure-circle {
@@ -223,24 +222,29 @@ code {
 
 /* ------ Estilos juego (distribución cámara + figuras) ------ */
 .game-layout {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: auto auto auto !important;
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.camera-column {
-  max-width: 600px;
-  min-width: 600px;
-  margin-left: 20px;
+/* Columna 1, Fila 1: Cámara */
+.camera-section {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .camera-box {
   border-radius: 16px;
   border: 3px dashed rgba(148, 163, 184, 0.9);
   background: rgba(255, 255, 255, 0.8);
-  width: 600px;
+  width: 100%;
   height: 300px;
   display: flex;
   align-items: center;
@@ -255,37 +259,123 @@ code {
 }
 
 .camera-instructions {
-  margin-top: 12px;
   font-size: 0.95rem;
   color: #4b5563;
+  margin: 0;
+}
+
+/* Columna 2, Fila 1: Sol */
+.sun-section {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sun-img {
+  width: 300px;
+  height: 300px;
+  z-index: -1;
+  transform: none; /* Eliminar el translateX */
+}
+
+/* Columna 1, Fila 2: Contenedor con 4 círculos */
+.circles-container-left {
+  grid-column: 1 !important;
+  grid-row: 2 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-figures-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0; /* Eliminar margin-bottom */
+}
+
+/* Columna 2, Fila 2: Contenedor con 2 círculos */
+.circles-container-right {
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Columna 2, Fila 3: Botón siguiente */
+.button-section {
+  grid-column: 2 !important;
+  grid-row: 3 !important;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.right-figures-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.next-button {
+  background: #f97316;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.5);
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s ease-out;
+  font-size: 1rem;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 100;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.next-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(249, 115, 22, 0.6);
+  background: #ea580c;
 }
 
 .game-figures {
-  margin-top: 100px;  
-  margin-left: 60px;
+  margin-top: 0;
+  margin-left: 0;
   display: flex;
   gap: 16px;
   position: relative;
 }
 
-.figure-circle.pos-1 {
-  transform: translateY(30px);
+.left-figure-circle.pos-1 {
+  transform: translateY(105px);
 }
-
-.figure-circle.pos-2 {
-  transform: translateY(13px);
+.left-figure-circle.pos-2 {
+  transform: translateY(88px);
 }
-
-.figure-circle.pos-3 {
-  transform: translateY(5px);
+.left-figure-circle.pos-3 {
+  transform: translateY(82px);
 }
-
-.figure-circle.pos-4 {
-  transform: translateY(6px);
+.left-figure-circle.pos-4 {
+  transform: translateY(83px);
 }
-
-.figure-circle.pos-5 {
-  transform: translateY(14px);
+.right-figure-circle.pos-5 {
+  transform: translate(220px, 17px);
+}
+.right-figure-circle.pos-6 {
+  transform: translate(220px, 14px);
 }
 
 .figure-circle {

@@ -50,30 +50,50 @@ function countFingers(lm, handLabel) {
 }
 
 function onResults(results) {
-  updateFingerCount(0);
+  // Resetear todos los círculos primero
+  const allCircles = document.querySelectorAll(".figure-circle");
+  allCircles.forEach(circle => circle.classList.remove("active"));
+  
   if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
     return;
   }
 
-  const lm = results.multiHandLandmarks[0];
-  const handLabel = results.multiHandedness[0].label;
-
-  const fingers = countFingers(lm, handLabel);
-
-  updateFingerCount(fingers);
+  // Procesar todas las manos detectadas
+  for (let i = 0; i < results.multiHandLandmarks.length; i++) {
+    const lm = results.multiHandLandmarks[i];
+    const handLabel = results.multiHandedness[i].label;
+    const fingers = countFingers(lm, handLabel);
+    
+    updateFingerCount(fingers, handLabel);
+  }
 }
 
 
-function updateFingerCount(count) {
+function updateFingerCount(count, hand) {
   console.log("Dedos detectados: ", count);
-  const circles = document.querySelectorAll(".figure-circle");
-  const n = Math.max(0, Math.min(circles.length, Number(count) || 0));
 
-  circles.forEach((circle, idx) => {
-    if (idx < n) {
-      circle.classList.add("active");
-    } else {
-      circle.classList.remove("active");
-    }
-  });
+  if (hand == "Left") {
+    const circles = document.querySelectorAll(".right-figure-circle");
+    const n = Math.max(0, Math.min(circles.length, Number(count) || 0));
+
+    circles.forEach((circle, idx) => {
+      if (idx < n) {
+        circle.classList.add("active");
+      } else {
+        circle.classList.remove("active");
+      }
+    });
+    
+  } else {
+    const circles = document.querySelectorAll(".left-figure-circle");
+    const n = Math.max(0, Math.min(circles.length, Number(count) || 0));
+
+    circles.forEach((circle, idx) => {
+      if (idx < n) {
+        circle.classList.add("active");
+      } else {
+        circle.classList.remove("active");
+      }
+    });
+  }  
 }

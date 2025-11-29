@@ -5,13 +5,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "reemplaza-esto-por-una-secret-key-segura"
 
-DEBUG = False
+# Detectar si estamos en Render.com
+IS_RENDER = os.environ.get("RENDER", "") != ""
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://figurasqe-dig.onrender.com",
-]
+DEBUG = not IS_RENDER
 
-ALLOWED_HOSTS = ["figurasqe-dig.onrender.com"]
+if DEBUG:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+    CSRF_TRUSTED_ORIGINS = []
+else:
+    ALLOWED_HOSTS = ["figurasqe-dig.onrender.com"]
+    CSRF_TRUSTED_ORIGINS = ["https://figurasqe-dig.onrender.com"]
+
+
+#ALLOWED_HOSTS = ["figurasqe-dig.onrender.com"]
+#CSRF_TRUSTED_ORIGINS = ["https://figurasqe-dig.onrender.com"]
+
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -25,7 +35,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",  # <-- aquí
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
