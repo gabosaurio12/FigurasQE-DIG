@@ -26,6 +26,7 @@ camera.start();
 function countFingers(lm, handLabel) {
   let fingers = 0;
 
+  console.log(handLabel);
   // Pulgares
   if (handLabel == "Right") {
     if (lm[4].x > lm[3].x) fingers++;
@@ -45,6 +46,7 @@ function countFingers(lm, handLabel) {
   // Meñique
   if (lm[20].y < lm[18].y) fingers++;
 
+  return fingers;
 }
 
 function onResults(results) {
