@@ -23,17 +23,15 @@ const camera = new Camera(videoElement, {
 
 camera.start();
 
-function onResults(results) {
-  updateFingerCount(0);
-  if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
-    return;
-  }
-
-  const lm = results.multiHandLandmarks[0];
-
+function countFingers(lm, handLabel) {
   let fingers = 0;
 
-  if (lm[4].x < lm[3].x) fingers++;
+  // Pulgares
+  if (handLabel == "Right") {
+    if (lm[4].x > lm[3].x) fingers++;
+  } else {
+    if (lm[4].x > lm[3].x) fingers++;
+  }
 
   // Índice
   if (lm[8].y < lm[6].y) fingers++;
@@ -46,6 +44,19 @@ function onResults(results) {
 
   // Meñique
   if (lm[20].y < lm[18].y) fingers++;
+
+}
+
+function onResults(results) {
+  updateFingerCount(0);
+  if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
+    return;
+  }
+
+  const lm = results.multiHandLandmarks[0];
+  const handLabel = results.multiHandedness[0].label;
+
+  const fingers = countFingers(lm, handLabel);
 
   updateFingerCount(fingers);
 }
