@@ -31,7 +31,7 @@ function countFingers(lm, handLabel) {
   if (handLabel == "Right") {
     if (lm[4].x > lm[3].x) fingers++;
   } else {
-    if (lm[4].x > lm[3].x) fingers++;
+    if (lm[4].x < lm[3].x) fingers++;
   }
 
   // Índice
