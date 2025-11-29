@@ -28,7 +28,7 @@ function countFingers(lm, handLabel) {
 
   console.log(handLabel);
   // Pulgares
-  if (handLabel == "Right") {
+  if (handLabel == "Left") {
     if (lm[4].x > lm[3].x) fingers++;
   } else {
     if (lm[4].x < lm[3].x) fingers++;
