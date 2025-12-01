@@ -97,3 +97,8 @@ function updateFingerCount(count, hand) {
     });
   }  
 }
+
+function closeModal() {
+  const modal = document.getElementById("startModal");
+  modal.style.display = "none";
+}
